@@ -1,0 +1,74 @@
+.weui-panel {
+    margin-top: 85px !important;
+    margin-bottom: 50px !important;
+}
+
+.weui-panel__bd {
+    box-sizing: border-box;
+}
+
+.title {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.title .username{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 150px;
+}
+.title .img {
+    display: flex;
+    align-items: center
+}
+
+.title .img img {
+    border-radius: 50%;
+    margin: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.title .time {
+    font-size: 12px;
+    color: #999;
+    padding-right: 15px;
+}
+
+.content .name {
+    padding-bottom: 10px
+}
+
+.content {
+    padding: 0px 10px;
+}
+
+.content img {
+    width: 100%;
+}
+
+.content .foot {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    padding: 5px 0 10px;
+    justify-content: space-around
+}
+
+.content .foot li {
+    list-style: none;
+    display: flex;
+    align-items: center
+}
+
+.content .icon {
+    padding-right: 5px;
+}
+
+.weui-cell__bd {
+    text-align: center;
+    color: #d43d3d;
+    padding: 10px 0px;
+}

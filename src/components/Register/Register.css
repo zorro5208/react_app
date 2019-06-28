@@ -1,0 +1,16 @@
+.register{
+    width: 100%;
+    overflow: hidden;
+    margin-top: 50px;
+}
+.register h2{
+    text-align: center;
+    margin-top: 10px;
+}
+.weui-btn_primary {
+    background-color: #d43d3d;
+}
+.weui-btn_primary:not(.weui-btn_disabled):active {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: #d17373;
+}
