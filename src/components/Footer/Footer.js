@@ -19,7 +19,7 @@ class Footer extends React.Component {
             icon: require('./关注.png')
         }, {
             title: '我的',
-            url: '/register',
+            url: '/my',
             icon: require('./我的.png')
         }]
     }
