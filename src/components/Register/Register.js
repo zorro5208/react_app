@@ -39,7 +39,7 @@ class Register extends React.Component {
                 </div>
             </div>
         </div>
-        <div className="weui-cells__tips">如果已有账号,请<a href="##" onClick={
+        <div className="weui-cells__tips">如果已有账号,请<a onClick={
             ()=>{
                 this.props.history.push('/login')
             }
@@ -72,7 +72,7 @@ class Register extends React.Component {
                 this.setState({
                   telState: true
                 })
-                Toast.info('验证通过', 1.5);
+                // Toast.info('验证通过', 1.5);
               } else {
                 this.setState({
                   telState: false
@@ -112,7 +112,7 @@ class Register extends React.Component {
             this.props.history.push('/login')
         }
         }else{
-            Toast.info('请输入完整的信息', 1.5);
+            Toast.info('信息不能为空', 1.5);
         }
         
     }

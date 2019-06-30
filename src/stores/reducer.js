@@ -1,7 +1,9 @@
 export default (state = {
     isShow: false,
     content : [],
-    uid : ''
+    uid : '',
+    token : false,
+    username : ''
 }, action) => {
     switch (action.type) {
         case 'GODETAIL':
@@ -10,13 +12,19 @@ export default (state = {
                 content : action.content,
                 uid : action.uid
             }
-            
-            case 'SEARCH':
-                return {
-                    ...state,
-                    isShow: action.isShow
-                }
-                default:
-                    return state
-                }
+        case 'login':
+            return {
+                ...state,
+                to : action.content,
+                token : action.token,
+                username : action.username
+            } 
+        case 'SEARCH':
+            return {
+                ...state,
+                isShow: action.isShow
             }
+            default:
+                return state
+            }
+        }

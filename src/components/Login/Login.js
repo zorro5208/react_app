@@ -5,11 +5,8 @@ import Header from '../Header/Header.js';
 import { HashRouter as Router ,withRouter  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Toast } from 'antd-mobile';
-
+import cookie from 'react-cookies'
 class Login extends React.Component {
-    state = {
-        
-    }
     goPrev(){
         window.history.go(-1)
     }
@@ -39,7 +36,7 @@ class Login extends React.Component {
                 </div>
             </div>
         </div>
-        <div className="weui-cells__tips">没有账号,请<a href="##" onClick={
+        <div className="weui-cells__tips">没有账号,请<a onClick={
             ()=>{
                 this.props.history.push('/register')
             }
@@ -55,7 +52,9 @@ class Login extends React.Component {
         this.state = {
           tel: '',
           password: '',
-          telState: false
+          telState: false,
+          token:true
+
         }
     
       }
@@ -72,7 +71,7 @@ class Login extends React.Component {
                 this.setState({
                   telState: true
                 })
-                Toast.info('验证通过', 1.5);
+                // Toast.info('验证通过', 1.5);
               } else {
                 this.setState({
                   telState: false
@@ -93,7 +92,9 @@ class Login extends React.Component {
           password: val
         })
       }
-    
+      componentWillUnmount(){
+          this.Login()
+      }
     async Login(){
         if(this.state.telState && this.state.password){
             const data = await axios.get('https://www.apiopen.top/login?',{
@@ -104,12 +105,21 @@ class Login extends React.Component {
             }
         })
         console.log(data.data)
-        
+        if (data.data.code === 200) {
             this.props.history.push('/home')
-        
-        
-        }else{
+            this.props.dispatch({
+                type: "login",
+                username : this.state.tel,
+                token:this.state.token
+            })
+            // 用户名存储到cookie
+            cookie.save('username',this.state.tel,{path: '/'})
+        }
+        if (data.data.code === 202) {
             Toast.info('手机号或密码错误', 1.5);
+        }  
+        }else{
+            Toast.info('信息不能为空', 1.5);
         }
         
     }

@@ -5,7 +5,7 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer'
 import { HashRouter as Router ,withRouter  } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import cookie from 'react-cookies'
 class My extends React.Component {
     state = {
         
@@ -34,14 +34,38 @@ class My extends React.Component {
                             display:'block',
                             borderRadius:'50%'
                         }} /></div>
-                        <div className="weui-cell__bd" onClick={
+                        {
+                            cookie.load('username')?<div className="weui-cell__bd" onClick={
+                                ()=>{
+                                    this.props.history.push('/login')
+                                }
+                            }>
+                                <p>{this.props.username}</p>
+                            </div>
+                            :<div className="weui-cell__bd" onClick={
+                                ()=>{
+                                    this.props.history.push('/login')
+                                }
+                            }>
+                                <p>登录/注册</p>
+                            </div>
+                        }
+                        
+                        <div className="weui-cell__ft" onClick={
                             ()=>{
+                                //修改stores的数据
+                                this.props.dispatch({
+                                    type: "login",
+                                    username : '',
+                                    token: false
+                                })
+                                // 删除cookie
+                                cookie.remove('username')
+                                //退出跳转登录页
                                 this.props.history.push('/login')
                             }
-                        }>
-                            <p>登录/注册</p> 
-                        </div>
-                        <div className="weui-cell__ft"></div>
+                        }>{
+                            this.props.token ? '退出' : ''}</div>
                     </a>
                 </div>
                     <div className="weui-cells">
@@ -68,15 +92,8 @@ class My extends React.Component {
         )
     }
     componentDidMount(){
-        this.getMore()
+        console.log(this)
     }
-    async getMore(){
-        
-        const data = await axios.get('http://api.budejie.com/api/api_open.php?a=list&c=data&type=1')
-        // console.log(data.data.data)
-        console.log(data)
-    }
-    
 }; 
 export default withRouter(connect((state)=>{
     return state
