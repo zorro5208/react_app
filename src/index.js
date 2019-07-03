@@ -17,6 +17,7 @@ import Search from './components/Search/Search.js';
 import Register from './components/Register/Register.js';
 import Login from './components/Login/Login.js';
 import My from './components/My/My.js';
+import Gz from './components/Gz/Gz.js';
 
 import New from './pages/New/New.js';
 
@@ -37,6 +38,7 @@ ReactDOM.render(
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/my" component={My} />
+                <Route exact path="/gz" component={Gz} />
 
             </Switch>
                

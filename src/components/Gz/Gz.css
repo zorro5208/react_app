@@ -1,0 +1,24 @@
+.list{
+    width: 100%;
+    overflow: hidden;
+    margin-top: 45px;
+}
+.weui-cells {
+    margin-top: 10px;
+    background-color: #FFFFFF;
+    font-size: 17px;
+    overflow: hidden;
+    position: relative;
+}
+.weui-cell {
+    padding: 0px 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+.list .weui-cell__bd {
+    text-align: left;
+    color: #333;
+    padding: 10px 0px;
+}
